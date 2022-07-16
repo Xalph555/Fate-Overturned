@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/Enemies/Spawner/EnemySpawner.gd"
 }, {
+"base": "TextureProgress",
+"class": "ExpBarUI",
+"language": "GDScript",
+"path": "res://Common/UI/PlayerUI/ExpBar/ExpBar.gd"
+}, {
 "base": "Area2D",
 "class": "ExpOrb",
 "language": "GDScript",
@@ -58,18 +63,25 @@ _global_script_classes=[ {
 "class": "PlayerStats",
 "language": "GDScript",
 "path": "res://Common/Player/PlayerStats.gd"
+}, {
+"base": "Label",
+"class": "TimeCounterUI",
+"language": "GDScript",
+"path": "res://Common/UI/PlayerUI/TimeCounter/TimeCounter.gd"
 } ]
 _global_script_class_icons={
 "BaseDice": "",
 "BasicEnemy": "",
 "DiceProjectile": "",
 "EnemySpawner": "",
+"ExpBarUI": "",
 "ExpOrb": "",
 "HitBox": "",
 "HurtBox": "",
 "LevelManager": "",
 "Player": "",
-"PlayerStats": ""
+"PlayerStats": "",
+"TimeCounterUI": ""
 }
 
 [application]

@@ -87,25 +87,27 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# movement
-	if event.is_action_pressed("move_up"):
-		_input_dir.y -= 1
-	if event.is_action_released("move_up"):
-		_input_dir.y += 1
+	# if event.is_action_pressed("move_up"):
+	# 	_input_dir.y -= 1
+	# if event.is_action_released("move_up"):
+	# 	_input_dir.y += 1
 	
-	if event.is_action_pressed("move_down"):
-		_input_dir.y += 1
-	if event.is_action_released("move_down"):
-		_input_dir.y -= 1
+	# if event.is_action_pressed("move_down"):
+	# 	_input_dir.y += 1
+	# if event.is_action_released("move_down"):
+	# 	_input_dir.y -= 1
 	
-	if event.is_action_pressed("move_left"):
-		_input_dir.x -= 1
-	if event.is_action_released("move_left"):
-		_input_dir.x += 1
+	# if event.is_action_pressed("move_left"):
+	# 	_input_dir.x -= 1
+	# if event.is_action_released("move_left"):
+	# 	_input_dir.x += 1
 	
-	if event.is_action_pressed("move_right"):
-		_input_dir.x += 1
-	if event.is_action_released("move_right"):
-		_input_dir.x -= 1
+	# if event.is_action_pressed("move_right"):
+	# 	_input_dir.x += 1
+	# if event.is_action_released("move_right"):
+	# 	_input_dir.x -= 1
+	
+	_input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	# throw dice
 	if event.is_action_pressed("action_1"):

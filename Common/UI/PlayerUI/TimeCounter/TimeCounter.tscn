@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Common/UI/PlayerUI/TimeCounter/TimeCounter.gd" type="Script" id=1]
+
+[node name="TimeCounter" type="Label"]
+margin_right = 56.0
+margin_bottom = 14.0
+rect_scale = Vector2( 4, 4 )
+text = "00:00:00"
+script = ExtResource( 1 )

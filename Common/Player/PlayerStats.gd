@@ -19,6 +19,8 @@ signal throw_rate_updated(new_throw_rate)
 
 signal invincibility_time_updated(new_invincibility_time)
 
+signal exp_pull_force_updated(new_exp_force)
+
 signal current_level_updated(new_level)
 signal max_experience_updated(new_max_experience)
 signal current_experience_updated(new_current_experience)
@@ -37,7 +39,7 @@ export(float) var throw_rate := 0.7
 
 export(float) var invincibility_time := 0.6
 
-export(float) var exp_pull_force := 100.0
+export(float) var exp_pull_force := 150.0
 
 export(Array, float) var level_exp_thresholds := []
 var current_level := 1
@@ -125,6 +127,16 @@ func add_invincibility_time(amount : float) -> void:
 	emit_signal("invincibility_time_updated", invincibility_time)
 
 
+# exp pull
+func add_exp_pull_force(amount : float) -> void:
+	exp_pull_force += amount
+
+	if exp_pull_force < 0.0:
+		exp_pull_force = 0.0
+
+	emit_signal("exp_pull_force_updated", exp_pull_force)
+
+
 # level
 func add_experience(amount : float) -> void:
 	current_experience += amount
@@ -141,7 +153,7 @@ func add_experience(amount : float) -> void:
 		print("Player Level Up!")
 
 		if (current_level - 1) < level_exp_thresholds.size():
-			max_experience = level_exp_thresholds[current_level]
+			max_experience = level_exp_thresholds[current_level - 1]
 			emit_signal("max_experience_updated", max_experience)
 
 

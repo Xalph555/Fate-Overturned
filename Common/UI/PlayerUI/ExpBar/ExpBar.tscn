@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Common/UI/PlayerUI/ExpBar/ExpBarBase.png" type="Texture" id=1]
+[ext_resource path="res://Common/UI/PlayerUI/ExpBar/ExpBarProgress.png" type="Texture" id=2]
+[ext_resource path="res://Common/UI/PlayerUI/ExpBar/ExpBar.gd" type="Script" id=3]
+[ext_resource path="res://Common/Player/PlayerStats.tres" type="Resource" id=4]
+
+[node name="ExpBar" type="TextureProgress"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -960.0
+margin_right = 960.0
+margin_bottom = 45.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+script = ExtResource( 3 )
+player_stats = ExtResource( 4 )
+level_text = NodePath("LevelText")
+
+[node name="LevelText" type="Label" parent="."]
+margin_left = 1330.0
+margin_top = 26.0
+margin_right = 1380.0
+margin_bottom = 40.0
+rect_scale = Vector2( 2, 2 )
+text = "Lv: 1"
