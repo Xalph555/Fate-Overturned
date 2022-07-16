@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Common/Enemies/Spawner/EnemySpawner.gd" type="Script" id=1]
+[ext_resource path="res://Common/Enemies/Basic/BasicEnemy.tscn" type="PackedScene" id=2]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource( 1 )
+spawner_data_path = "res://Common/Enemies/Spawner/SpawnerData.json"
+enemies = [ ExtResource( 2 ) ]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

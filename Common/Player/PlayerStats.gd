@@ -11,8 +11,6 @@ signal all_stats_updated
 signal max_health_updated(new_max_health)
 signal current_health_updated(new_current_health)
 
-signal player_died
-
 signal acceleration_updated(new_acceleration)
 signal max_speed_updated(new_speed)
 
@@ -39,7 +37,7 @@ export(float) var throw_rate := 0.7
 
 export(float) var invincibility_time := 0.6
 
-export(Array, float) var level_exp_thresholds
+export(Array, float) var level_exp_thresholds := []
 var current_level := 1
 var max_experience := 0.0
 var current_experience := 0.0
@@ -50,7 +48,7 @@ var current_experience := 0.0
 func init_stats() -> void:
 	current_health = max_health
 	max_experience = level_exp_thresholds[0]
-	
+
 	emit_signal("all_stats_updated")
 
 
@@ -74,7 +72,7 @@ func add_current_health(amount : float) -> void:
 
 	if current_health <= 0.0:
 		print("Player has died")
-		emit_signal("player_died")
+		GameEvents.emit_signal("player_died")
 
 
 # movement

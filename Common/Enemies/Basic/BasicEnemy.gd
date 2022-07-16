@@ -1,17 +1,17 @@
-# HitBox
+# BasicEnemy
 # -----------------------------------------
 extends KinematicBody2D
 class_name BasicEnemy
 
 # Signals
 # ----------------------------------
-signal EnemyDied
+signal enemy_died
 
 
 # Variables
 # ----------------------------------
-# for testing
-export(NodePath) onready var player_ref = get_node(player_ref) as Player
+export(PackedScene) var exp_orb
+export(float) var base_exp := 10.0
 
 export(float) var max_health := 5.0
 onready var current_health := max_health
@@ -25,6 +25,8 @@ export(float) var ground_friction := 0.2
 var move_dir := Vector2.ZERO
 var velocity := Vector2.ZERO
 
+var player_ref
+
 onready var _hurtbox := $HurtBox as HurtBox
 
 
@@ -34,7 +36,13 @@ func _ready() -> void:
 	_hurtbox.parent = self
 
 
-func _spawn_init(spawn_mod : float = 1.0) -> void:
+func spawn_init(player, location : Vector2, spawn_mod : float = 1.0) -> void:
+	player_ref = player
+
+	self.global_position = location
+
+	base_exp *= spawn_mod
+
 	base_damage *= spawn_mod
 	base_knockback *= spawn_mod
 	move_speed *= spawn_mod
@@ -64,7 +72,8 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 	velocity += knockback_force
 
 	if current_health <= 0.0:
-		emit_signal("EnemyDied")
+		emit_signal("enemy_died")
+
 		call_deferred("free")
 
 
