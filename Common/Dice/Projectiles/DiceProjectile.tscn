@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Common/Dice/BaseDice/BaseDice.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/Dice/Projectiles/DiceProjectile.gd" type="Script" id=2]
+[ext_resource path="res://Common/Temp/BlankTexture.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 20.0
+_data = [ Vector2( 0, 7.18182 ), 0.0, 0.0, 0, 0, Vector2( 0.98913, 1.63636 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+trail_divisor = 2
+flag_disable_z = true
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 0.27
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="DiceProjectile" instance=ExtResource( 1 )]
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="RollTimer" type="Timer" parent="." index="0"]
+one_shot = true
+
+[node name="Particles2D" type="Particles2D" parent="." index="1"]
+show_behind_parent = true
+amount = 10
+visibility_rect = Rect2( -50, -50, 100, 100 )
+local_coords = false
+process_material = SubResource( 5 )
+
+[connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]

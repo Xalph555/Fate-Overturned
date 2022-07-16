@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Common/Dice/Projectiles/DiceProjectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/Dice/Projectiles/D6/D6Sprites.png" type="Texture" id=2]
+[ext_resource path="res://Common/Dice/Projectiles/D6/D6.gd" type="Script" id=3]
+
+[node name="D6" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+hframes = 6
+script = ExtResource( 3 )
+dice_name = "D6"
+roll_time = 0.6
+destory_timer = 0.8

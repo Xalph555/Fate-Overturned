@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Common/Dice/DiceDataBase.gd" type="Script" id=1]
+
+[node name="DiceWeightDataBase" type="Node"]
+script = ExtResource( 1 )
+dice_path = "res://Common/Dice/DiceData.json"
