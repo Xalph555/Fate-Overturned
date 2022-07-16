@@ -59,8 +59,18 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 
 
+func spawn_exp_orb() -> void:
+	var exp_instance = exp_orb.instance()
+	exp_instance.exp_amount = base_exp
+	exp_instance.global_position = self.global_position
+	get_tree().current_scene.add_child(exp_instance)
+
+
 # damage
 func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage_entity) -> void:
+	if current_health <= 0.0:
+		return 
+
 	current_health -= dmg
 
 	var knockback_force = knockback_dir * knockback
@@ -72,6 +82,8 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 	velocity += knockback_force
 
 	if current_health <= 0.0:
+		call_deferred("spawn_exp_orb")
+		
 		emit_signal("enemy_died")
 
 		call_deferred("free")

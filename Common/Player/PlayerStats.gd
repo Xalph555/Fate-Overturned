@@ -37,6 +37,8 @@ export(float) var throw_rate := 0.7
 
 export(float) var invincibility_time := 0.6
 
+export(float) var exp_pull_force := 100.0
+
 export(Array, float) var level_exp_thresholds := []
 var current_level := 1
 var max_experience := 0.0
@@ -135,6 +137,8 @@ func add_experience(amount : float) -> void:
 
 		current_level += 1
 		emit_signal("current_level_updated", current_level)
+
+		print("Player Level Up!")
 
 		if (current_level - 1) < level_exp_thresholds.size():
 			max_experience = level_exp_thresholds[current_level]

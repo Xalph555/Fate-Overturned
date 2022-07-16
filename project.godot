@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Common/Enemies/Spawner/EnemySpawner.gd"
 }, {
 "base": "Area2D",
+"class": "ExpOrb",
+"language": "GDScript",
+"path": "res://Common/Enemies/Experience/ExpOrb.gd"
+}, {
+"base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
 "path": "res://Common/HitHurtBox/Hitbox/HitBox.gd"
@@ -59,6 +64,7 @@ _global_script_class_icons={
 "BasicEnemy": "",
 "DiceProjectile": "",
 "EnemySpawner": "",
+"ExpOrb": "",
 "HitBox": "",
 "HurtBox": "",
 "LevelManager": "",

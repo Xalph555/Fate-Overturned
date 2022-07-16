@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Common/Enemies/Basic/BasicEnemySprite.png" type="Texture" id=1]
 [ext_resource path="res://Common/HitHurtBox/Hurtbox/HurtBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Common/Enemies/Basic/BasicEnemy.gd" type="Script" id=3]
 [ext_resource path="res://Common/HitHurtBox/Hitbox/HitBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/Enemies/Experience/ExpOrb.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.49999
@@ -22,6 +23,7 @@ scale = Vector2( 2, 2 )
 collision_layer = 131072
 collision_mask = 131584
 script = ExtResource( 3 )
+exp_orb = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

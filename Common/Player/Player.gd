@@ -148,13 +148,25 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 func _on_ThrowRateTimer_timeout() -> void:
 	_can_throw = true
 
-
 func _on_invincibilityTimer_timeout() -> void:
 	_hurtbox.disable_col_shape(false)
-
 
 func _on_throw_rate_updated(new_throw_rate : float) -> void:
 	_throw_rate_timer.wait_time = new_throw_rate
 
 func _on_invincibility_time_updated(new_invincibility_time : float) -> void:
 	_invincibility_timer.wait_time = new_invincibility_time
+
+
+# exp collection
+func _on_ExpCollectionArea_area_entered(area:Area2D) -> void:
+	var exp_orb = area as ExpOrb
+
+	if exp_orb:
+		exp_orb.set_movement(self, player_stats.exp_pull_force)
+
+func _on_ExpCollectionArea_area_exited(area:Area2D) -> void:
+	var exp_orb = area as ExpOrb
+
+	if exp_orb:
+		exp_orb.set_movement(null, 0.0)
