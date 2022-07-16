@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Common/Player/PlayerStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_health = 50.0
+acceleration = 70.0
+max_speed = 500.0
+throw_force = 500.0
+throw_rate = 0.7
+invincibility_time = 0.6
+level_exp_thresholds = [ 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0 ]

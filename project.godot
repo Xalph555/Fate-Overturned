@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/Dice/BaseDice/BaseDice.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "BasicEnemy",
+"language": "GDScript",
+"path": "res://Common/Enemies/Basic/BasicEnemy.gd"
+}, {
 "base": "BaseDice",
 "class": "DiceProjectile",
 "language": "GDScript",
@@ -33,13 +38,20 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Common/Player/Player.gd"
+}, {
+"base": "Resource",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://Common/Player/PlayerStats.gd"
 } ]
 _global_script_class_icons={
 "BaseDice": "",
+"BasicEnemy": "",
 "DiceProjectile": "",
 "HitBox": "",
 "HurtBox": "",
-"Player": ""
+"Player": "",
+"PlayerStats": ""
 }
 
 [application]
@@ -97,6 +109,7 @@ action_1={
 
 2d_physics/layer_1="Barrier"
 2d_physics/layer_10="Player"
+2d_physics/layer_18="Enemy"
 
 [physics]
 
