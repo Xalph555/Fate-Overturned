@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Common/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Common/UI/Fonts/TitleFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Common/UI/Fonts/UIBodyLarge.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Common/UI/Button/SoundButton.tscn" type="PackedScene" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -45,15 +45,15 @@ margin_bottom = 657.0
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ButtonControl"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -190.0
-margin_right = 190.0
-margin_bottom = 63.0
+margin_left = -137.5
+margin_right = 137.5
+margin_bottom = 71.0
 alignment = 1
 
-[node name="Play" type="Button" parent="VBoxContainer/ButtonControl/VBoxContainer2"]
-margin_right = 380.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Play" parent="VBoxContainer/ButtonControl/VBoxContainer2" instance=ExtResource( 3 )]
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 64.0
 text = "Play"
 
 [connection signal="button_up" from="VBoxContainer/ButtonControl/VBoxContainer2/Play" to="." method="_on_Play_button_up"]

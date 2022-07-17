@@ -1,22 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Common/UI/Fonts/TitleFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Common/UI/Fonts/SinsGold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Common/UI/Button/SoundButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Common/UI/LevelUpUI/DiceCard/DiceCard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Common/UI/LevelUpUI/LevelUpUI.gd" type="Script" id=4]
 [ext_resource path="res://Common/Dice/Projectiles/D8/D8.tres" type="Resource" id=5]
 [ext_resource path="res://Common/Dice/Projectiles/Explosive/Explosive.tres" type="Resource" id=6]
 [ext_resource path="res://Common/Dice/Projectiles/D6/D6.tres" type="Resource" id=7]
-
-[sub_resource type="DynamicFont" id=1]
-size = 72
-use_mipmaps = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 72
-use_mipmaps = true
-font_data = ExtResource( 2 )
 
 [node name="LevelUpUI" type="Control"]
 pause_mode = 2
@@ -40,41 +30,39 @@ custom_constants/separation = 50
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 402.0
+margin_top = 405.0
 margin_right = 1920.0
-margin_bottom = 514.0
+margin_bottom = 517.0
 custom_fonts/font = ExtResource( 1 )
 text = "Level Up!"
 align = 1
 valign = 1
 
 [node name="Cards" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 564.0
+margin_top = 567.0
 margin_right = 1920.0
-margin_bottom = 564.0
+margin_bottom = 567.0
 custom_constants/separation = 30
 alignment = 1
 
 [node name="ConfirmationButtons" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 614.0
+margin_top = 617.0
 margin_right = 1920.0
-margin_bottom = 677.0
+margin_bottom = 674.0
 custom_constants/separation = 50
 alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="VBoxContainer/ConfirmationButtons"]
-margin_left = 804.0
-margin_right = 969.0
-margin_bottom = 63.0
-custom_fonts/font = SubResource( 1 )
-text = "Confirm"
+[node name="ConfirmButton" parent="VBoxContainer/ConfirmationButtons" instance=ExtResource( 2 )]
+margin_left = 733.0
+margin_right = 934.0
+margin_bottom = 57.0
+text = "  Confirm"
 
-[node name="SkipButton" type="Button" parent="VBoxContainer/ConfirmationButtons"]
-margin_left = 1019.0
-margin_right = 1116.5
-margin_bottom = 63.0
-custom_fonts/font = SubResource( 2 )
-text = "Skip"
+[node name="SkipButton" parent="VBoxContainer/ConfirmationButtons" instance=ExtResource( 2 )]
+margin_left = 984.0
+margin_right = 1186.0
+margin_bottom = 57.0
+text = "     Skip"
 
 [connection signal="button_up" from="VBoxContainer/ConfirmationButtons/ConfirmButton" to="." method="_on_ConfirmButton_button_up"]
 [connection signal="button_up" from="VBoxContainer/ConfirmationButtons/SkipButton" to="." method="_on_SkipButton_button_up"]

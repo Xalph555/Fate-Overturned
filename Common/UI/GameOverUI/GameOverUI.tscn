@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Common/UI/Fonts/UIBodyLarge.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Common/UI/Fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Common/UI/GameOverUI/GameOverUI.gd" type="Script" id=3]
+[ext_resource path="res://Common/UI/Button/SoundButton.tscn" type="PackedScene" id=4]
 
 [node name="GameOverUI" type="Control"]
 pause_mode = 2
@@ -25,43 +26,41 @@ custom_constants/separation = 60
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 364.0
+margin_top = 367.0
 margin_right = 1920.0
-margin_bottom = 476.0
+margin_bottom = 479.0
 custom_fonts/font = ExtResource( 2 )
 text = "Game Over!"
 align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer"]
-margin_top = 536.0
+margin_top = 539.0
 margin_right = 1920.0
-margin_bottom = 593.0
+margin_bottom = 596.0
 custom_fonts/font = ExtResource( 1 )
 text = "Score: 0000"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 653.0
+margin_top = 656.0
 margin_right = 1920.0
-margin_bottom = 716.0
+margin_bottom = 713.0
 custom_constants/separation = 60
 alignment = 1
 
-[node name="PlayAgain" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 762.0
-margin_right = 875.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 1 )
-text = "Retry"
+[node name="PlayAgain" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 682.0
+margin_right = 921.0
+margin_bottom = 57.0
+text = "      Retry"
 
-[node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 935.0
-margin_right = 1157.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 1 )
-text = "Main Menu"
+[node name="MainMenu" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 981.0
+margin_right = 1237.0
+margin_bottom = 57.0
+text = "  Main Menu"
 
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/PlayAgain" to="." method="_on_PlayAgain_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_button_up"]

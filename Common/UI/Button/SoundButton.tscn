@@ -1,0 +1,49 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Common/UI/Fonts/UIBodyLarge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Common/UI/Button/ButtonNormal.png" type="Texture" id=2]
+[ext_resource path="res://Common/UI/Button/switch15.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Common/UI/Button/ButtonHovered.png" type="Texture" id=4]
+[ext_resource path="res://Common/UI/Button/ButtonDisabled.png" type="Texture" id=5]
+[ext_resource path="res://Common/UI/Button/ButtonPressed.png" type="Texture" id=6]
+[ext_resource path="res://Common/UI/Button/SoundButton.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 192, 80 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 192, 80 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 192, 80 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 192, 80 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 192, 80 )
+
+[node name="SoundButton" type="Button"]
+margin_right = 256.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Button Text"
+align = 2
+script = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "Sound"
+
+[connection signal="button_down" from="." to="." method="_on_SoundButton_button_down"]

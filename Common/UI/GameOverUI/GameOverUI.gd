@@ -44,3 +44,4 @@ func _on_PlayAgain_button_up() -> void:
 
 func _on_MainMenu_button_up() -> void:
 	get_tree().change_scene(main_menu_scene)
+

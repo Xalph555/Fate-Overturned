@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Broken Fragment.wav-4c59d5db4addb2b97efe530b11a78baf.sample"
+
+[deps]
+
+source_file="res://Common/UI/GameOverUI/Broken Fragment.wav"
+dest_files=[ "res://.import/Broken Fragment.wav-4c59d5db4addb2b97efe530b11a78baf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
