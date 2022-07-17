@@ -35,11 +35,13 @@ onready var _spawn_timer := $SpawnTimer as Timer
 # Functions
 # ----------------------------------------
 func _ready() -> void:
+	GameEvents.connect("game_start", self, "_on_game_start")
+
 	level_manager = get_tree().get_nodes_in_group("LevelManager")[0]
 	player_ref = get_tree().get_nodes_in_group("Player")[0]
 
 	load_spawner_data()
-	init_spawner()
+	
 
 
 func _process(_delta: float) -> void:
@@ -100,3 +102,7 @@ func _on_SpawnTimer_timeout() -> void:
 func _on_enemy_death() -> void:
 	total_spawned -= 1
 	level_manager.total_kills += 1
+
+
+func _on_game_start() -> void:
+	init_spawner()

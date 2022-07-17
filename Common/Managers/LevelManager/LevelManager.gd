@@ -21,9 +21,9 @@ var total_kills := 0
 # ----------------------------------------
 func _ready() -> void:
 	randomize()
+	get_tree().paused = true
 
-	counting_time = true
-	resume_game()
+	GameEvents.connect("game_start", self, "_on_game_start")
 
 
 func _process(delta: float) -> void:
@@ -45,3 +45,8 @@ func resume_game() -> void:
 func game_over() -> void:
 	counting_time = false
 	get_tree().paused = true
+
+
+func _on_game_start() -> void:
+	counting_time = true
+	resume_game()

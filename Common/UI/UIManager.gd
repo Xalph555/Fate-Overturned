@@ -11,6 +11,8 @@ export(NodePath) var level_up_ui_path
 export(NodePath) var player_ui_path
 export(NodePath) var game_over_ui_path
 
+export(NodePath) var game_start_ui_path
+
 
 
 # Functions
@@ -34,4 +36,7 @@ func _ready() -> void:
 		var game_over_ui = get_node(game_over_ui_path)
 		game_over_ui.init_ui()
 
-
+	# must be last - starts the game
+	if game_start_ui_path:
+		var game_start_ui = get_node(game_start_ui_path)
+		game_start_ui.init_ui()

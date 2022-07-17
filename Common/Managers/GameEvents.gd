@@ -5,6 +5,8 @@ extends Node
 
 # Signals
 # ----------------------------------
+signal game_start
+
 signal game_paused
 signal game_resumed
 

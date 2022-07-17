@@ -15,6 +15,7 @@ main_menu_scene = "res://Common/UI/MainMenu/MainMenu.tscn"
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.87451 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -49,15 +50,15 @@ custom_constants/separation = 60
 alignment = 1
 
 [node name="PlayAgain" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 765.0
-margin_right = 876.0
+margin_left = 762.0
+margin_right = 875.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
 text = "Retry"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 936.0
-margin_right = 1155.0
+margin_left = 935.0
+margin_right = 1157.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
 text = "Main Menu"
