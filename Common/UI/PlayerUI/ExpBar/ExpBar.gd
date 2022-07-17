@@ -13,7 +13,7 @@ export(NodePath) onready var level_text = get_node(level_text) as Label
 
 # Functions
 # ------------------------------------
-func _ready() -> void:
+func init_ui() -> void:
 	self.max_value = player_stats.max_experience
 	self.value = 0.0
 	level_text.text = "Lv: " + str(player_stats.current_level)

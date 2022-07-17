@@ -6,7 +6,7 @@ class_name TimeCounterUI
 
 # Functions
 # ------------------------------------
-func _ready() -> void:
+func init_ui() -> void:
 	GameEvents.connect("time_updated", self, "_on_time_updated")
 
 

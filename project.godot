@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/UI/LevelUpUI/LevelUpUI.gd"
 }, {
+"base": "VBoxContainer",
+"class": "NextDiceIndicatorUI",
+"language": "GDScript",
+"path": "res://Common/UI/PlayerUI/NextDiceIndicator/NextDiceIndicator.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -93,6 +98,11 @@ _global_script_classes=[ {
 "class": "PlayerStats",
 "language": "GDScript",
 "path": "res://Common/Player/PlayerStats.gd"
+}, {
+"base": "Control",
+"class": "PlayerUI",
+"language": "GDScript",
+"path": "res://Common/UI/PlayerUI/PlayerUI.gd"
 }, {
 "base": "Label",
 "class": "TimeCounterUI",
@@ -119,9 +129,11 @@ _global_script_class_icons={
 "HurtBox": "",
 "LevelManager": "",
 "LevelUpUI": "",
+"NextDiceIndicatorUI": "",
 "Player": "",
 "PlayerHPBarUI": "",
 "PlayerStats": "",
+"PlayerUI": "",
 "TimeCounterUI": "",
 "UIManager": ""
 }

@@ -20,6 +20,7 @@ spawn_node = NodePath("../YSort")
 script = ExtResource( 7 )
 player_hp_bar = NodePath("PlayerHPBar")
 level_up_ui = NodePath("LevelUpUI")
+player_ui = NodePath("PlayerUI")
 
 [node name="PlayerUI" parent="UIManager" instance=ExtResource( 4 )]
 

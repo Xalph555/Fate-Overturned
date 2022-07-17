@@ -37,3 +37,5 @@ func pause_game() -> void:
 func resume_game() -> void:
 	GameEvents.emit_signal("game_resumed")
 	get_tree().paused = false
+
+
