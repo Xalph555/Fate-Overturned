@@ -32,3 +32,8 @@ func throw_dice() -> void:
 		next_dice = 0
 	
 	emit_signal("new_current_dice", dice[next_dice])
+
+
+func add_dice(new_dice : DiceResource) -> void:
+	if new_dice:
+		dice.append(new_dice)

@@ -149,6 +149,7 @@ func add_experience(amount : float) -> void:
 
 		current_level += 1
 		emit_signal("current_level_updated", current_level)
+		GameEvents.emit_signal("player_level_up", current_level)
 
 		print("Player Level Up!")
 

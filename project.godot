@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/Dice/DiceBag/DiceBag.gd"
 }, {
+"base": "TextureRect",
+"class": "DiceCardUI",
+"language": "GDScript",
+"path": "res://Common/UI/LevelUpUI/DiceCard/DiceCard.gd"
+}, {
 "base": "BaseDice",
 "class": "DiceProjectile",
 "language": "GDScript",
@@ -69,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/Managers/LevelManager/LevelManager.gd"
 }, {
+"base": "Control",
+"class": "LevelUpUI",
+"language": "GDScript",
+"path": "res://Common/UI/LevelUpUI/LevelUpUI.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -88,11 +98,17 @@ _global_script_classes=[ {
 "class": "TimeCounterUI",
 "language": "GDScript",
 "path": "res://Common/UI/PlayerUI/TimeCounter/TimeCounter.gd"
+}, {
+"base": "CanvasLayer",
+"class": "UIManager",
+"language": "GDScript",
+"path": "res://Common/UI/UIManager.gd"
 } ]
 _global_script_class_icons={
 "BaseDice": "",
 "BasicEnemy": "",
 "DiceBag": "",
+"DiceCardUI": "",
 "DiceProjectile": "",
 "DiceResource": "",
 "EnemySpawner": "",
@@ -102,10 +118,12 @@ _global_script_class_icons={
 "HitBox": "",
 "HurtBox": "",
 "LevelManager": "",
+"LevelUpUI": "",
 "Player": "",
 "PlayerHPBarUI": "",
 "PlayerStats": "",
-"TimeCounterUI": ""
+"TimeCounterUI": "",
+"UIManager": ""
 }
 
 [application]
