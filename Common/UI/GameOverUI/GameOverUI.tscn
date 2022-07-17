@@ -5,10 +5,12 @@
 [ext_resource path="res://Common/UI/GameOverUI/GameOverUI.gd" type="Script" id=3]
 
 [node name="GameOverUI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 score_label = NodePath("VBoxContainer/Score")
+main_menu_scene = "res://Common/UI/MainMenu/MainMenu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

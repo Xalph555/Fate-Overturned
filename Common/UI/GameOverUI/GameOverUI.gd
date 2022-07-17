@@ -8,6 +8,8 @@ class_name GameOverUI
 # ------------------------------------------
 export(NodePath) onready var score_label = get_node(score_label) as Label
 
+export(String, FILE) var main_menu_scene 
+
 var is_game_over := false
 
 
@@ -37,8 +39,8 @@ func _on_player_died() -> void:
 
 
 func _on_PlayAgain_button_up() -> void:
-	pass # Replace with function body.
+	get_tree().reload_current_scene()
 
 
 func _on_MainMenu_button_up() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene(main_menu_scene)

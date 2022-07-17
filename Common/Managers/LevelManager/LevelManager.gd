@@ -23,6 +23,7 @@ func _ready() -> void:
 	randomize()
 
 	counting_time = true
+	resume_game()
 
 
 func _process(delta: float) -> void:
