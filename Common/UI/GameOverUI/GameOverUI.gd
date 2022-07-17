@@ -9,6 +9,7 @@ class_name GameOverUI
 export(NodePath) onready var score_label = get_node(score_label) as Label
 
 export(String, FILE) var main_menu_scene 
+export(AudioStream) var game_over_music
 
 var is_game_over := false
 
@@ -25,6 +26,8 @@ func _on_player_died() -> void:
 	if is_game_over: 
 		return
 	is_game_over = true
+
+	BackgroundMusicManager.change_track(game_over_music)
 
 	var level_manager = get_tree().get_nodes_in_group("LevelManager")[0]
 	var player_stats = get_tree().get_nodes_in_group("Player")[0].player_stats

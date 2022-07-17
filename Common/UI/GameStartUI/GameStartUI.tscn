@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Common/UI/Fonts/UIBodyLarge.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Common/UI/GameStartUI/GameStartUI.gd" type="Script" id=2]
+[ext_resource path="res://Common/UI/GameStartUI/An Adventure in the Future.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -78,6 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 2 )
+level_music = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false

@@ -6,6 +6,8 @@ class_name GameStartUI
 
 # Variables
 # -----------------------------------
+export(AudioStream) var level_music
+
 onready var _anim_player := $AnimationPlayer
 
 
@@ -20,3 +22,4 @@ func init_ui() -> void:
 
 func start_game() -> void:
 	GameEvents.emit_signal("game_start")
+	BackgroundMusicManager.change_track(level_music)

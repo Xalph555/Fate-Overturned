@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Common/UI/Fonts/UIBodyLarge.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Common/UI/Fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Common/UI/GameOverUI/GameOverUI.gd" type="Script" id=3]
 [ext_resource path="res://Common/UI/Button/SoundButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/UI/GameOverUI/Broken Fragment.wav" type="AudioStream" id=5]
 
 [node name="GameOverUI" type="Control"]
 pause_mode = 2
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 score_label = NodePath("VBoxContainer/Score")
 main_menu_scene = "res://Common/UI/MainMenu/MainMenu.tscn"
+game_over_music = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

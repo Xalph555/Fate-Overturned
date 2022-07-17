@@ -166,6 +166,7 @@ config/icon="res://icon.png"
 
 DiceDataBase="*res://Common/Dice/DiceDataBase.tscn"
 GameEvents="*res://Common/Managers/GameEvents.gd"
+BackgroundMusicManager="*res://Common/Managers/BackgroundMusic/BackgroundMusicManager.tscn"
 
 [display]
 

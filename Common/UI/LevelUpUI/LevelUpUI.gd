@@ -17,6 +17,8 @@ var card_instances := []
 
 var selected_card : DiceCardUI = null
 
+var volume_damp := 10.0
+
 var _player_ref : Player
 
 
@@ -60,6 +62,8 @@ func close_ui() -> void:
 	# GameEvents.emit_signal("resume_game")
 	get_tree().get_nodes_in_group("LevelManager")[0].resume_game()
 
+	BackgroundMusicManager.change_volume(BackgroundMusicManager.get_current_volume() + volume_damp)
+
 
 func _on_player_level_up(_new_level : int) -> void:
 	# GameEvents.emit_signal("pause_game")
@@ -68,6 +72,8 @@ func _on_player_level_up(_new_level : int) -> void:
 
 	set_up_ui()
 	self.visible = true
+
+	BackgroundMusicManager.change_volume(BackgroundMusicManager.get_current_volume() - volume_damp)
 
 
 func _on_card_selected(card : DiceCardUI) -> void:
