@@ -14,13 +14,10 @@
 [node name="LevelManager" parent="." instance=ExtResource( 3 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
-level_manager = NodePath("../LevelManager")
 spawn_node = NodePath("../YSort")
-player_ref = NodePath("../YSort/Player")
 
 [node name="UIManager" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
-player = NodePath("../YSort/Player")
 player_hp_bar = NodePath("PlayerHPBar")
 level_up_ui = NodePath("LevelUpUI")
 

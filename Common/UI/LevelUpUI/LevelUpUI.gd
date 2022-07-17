@@ -22,8 +22,8 @@ var _player_ref : Player
 
 # Functions
 # ----------------------------------------
-func init_ui(player_ref : Player) -> void:
-	_player_ref = player_ref
+func init_ui() -> void:
+	_player_ref = get_tree().get_nodes_in_group("Player")[0]
 
 	GameEvents.connect("player_level_up", self, "_on_player_level_up")
 	
@@ -57,11 +57,15 @@ func clear_cards() -> void:
 func close_ui() -> void:
 	self.visible = false
 	clear_cards()
-	GameEvents.emit_signal("resume_game")
+	# GameEvents.emit_signal("resume_game")
+	get_tree().get_nodes_in_group("LevelManager")[0].resume_game()
 
 
 func _on_player_level_up(_new_level : int) -> void:
-	GameEvents.emit_signal("pause_game")
+	# GameEvents.emit_signal("pause_game")
+
+	get_tree().get_nodes_in_group("LevelManager")[0].pause_game()
+
 	set_up_ui()
 	self.visible = true
 

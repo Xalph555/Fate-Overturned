@@ -8,9 +8,9 @@ class_name EnemySpawner
 # ------------------------------------------
 export (String, FILE, "*.json") var spawner_data_path
 
-export(NodePath) onready var level_manager = get_node(level_manager) as LevelManager
 export(NodePath) onready var spawn_node = get_node(spawn_node) as YSort
-export(NodePath) onready var player_ref = get_node(player_ref) as Player
+var level_manager : LevelManager
+var player_ref : Player
 
 export(float) var spawn_distance := 1000.0
 
@@ -35,6 +35,9 @@ onready var _spawn_timer := $SpawnTimer as Timer
 # Functions
 # ----------------------------------------
 func _ready() -> void:
+	level_manager = get_tree().get_nodes_in_group("LevelManager")[0]
+	player_ref = get_tree().get_nodes_in_group("Player")[0]
+
 	load_spawner_data()
 	init_spawner()
 

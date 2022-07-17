@@ -26,10 +26,10 @@ var dice : DiceResource
 func set_up_card(assigned_dice : DiceResource) -> void:
 	dice = assigned_dice
 
-	var dice_data = DiceDataBase.dice_data[assigned_dice.dice_data_name]
+	var dice_data = DiceDataBase.dice_data[dice.dice_data_name]
 
 	dice_name_label.text = dice_data["name"]
-	dice_icon.texture = assigned_dice.dice_icon
+	dice_icon.texture = dice.dice_icon
 	dice_description_label.text = dice_data["description"]
 
 

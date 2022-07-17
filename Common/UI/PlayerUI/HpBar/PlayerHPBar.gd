@@ -14,8 +14,8 @@ var _player_ref : Player
 
 # Functions
 # ------------------------------------
-func init_ui(player_ref : Player) -> void:
-	_player_ref = player_ref
+func init_ui() -> void:
+	_player_ref = get_tree().get_nodes_in_group("Player")[0]
 
 	progress_bar.max_value = _player_ref.player_stats.max_health
 	progress_bar.value = _player_ref.player_stats.current_health
