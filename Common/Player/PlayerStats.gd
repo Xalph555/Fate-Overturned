@@ -39,7 +39,7 @@ export(float) var throw_rate := 0.7
 
 export(float) var invincibility_time := 0.6
 
-export(float) var exp_pull_force := 150.0
+export(float) var exp_pull_force := 400.0
 
 export(Array, float) var level_exp_thresholds := []
 var current_level := 1

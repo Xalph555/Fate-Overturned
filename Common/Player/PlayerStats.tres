@@ -10,5 +10,5 @@ max_speed = 500.0
 throw_force = 500.0
 throw_rate = 0.7
 invincibility_time = 0.6
-exp_pull_force = 150.0
+exp_pull_force = 300.0
 level_exp_thresholds = [ 20.0, 40.0, 70.0, 100.0, 130.0, 160.0, 190.0, 210.0, 240.0, 270.0, 300.0, 350.0, 400.0, 450.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0 ]
