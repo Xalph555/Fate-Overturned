@@ -41,6 +41,8 @@ func spawn_init(player, location : Vector2, spawn_mod : float = 1.0) -> void:
 
 	self.global_position = location
 
+	max_health *= spawn_mod
+
 	base_exp *= spawn_mod
 
 	base_damage *= spawn_mod
@@ -90,7 +92,7 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 
 
 func _on_HitBox_area_entered(area:Area2D) -> void:
-	print("Basic enemy detecting possible hit")
+	# print("Basic enemy detecting possible hit")
 
 	var hit_area = area as HurtBox
 
