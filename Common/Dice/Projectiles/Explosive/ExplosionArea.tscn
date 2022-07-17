@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Common/HitHurtBox/Hitbox/HitBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/Dice/Projectiles/Explosive/ExplosionArea.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 80.0
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 333.33
+initial_velocity_random = 0.77
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 29.82
+radial_accel = 24.56
+tangential_accel = 24.56
+damping = 100.0
+angle = 277.9
+angle_random = 0.32
+scale = 20.0
+scale_random = 0.58
+color = Color( 1, 0.529412, 0.113725, 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.253906, 0.253906, 0.253906, 1, 0.699219, 0.699219, 0.699219, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 333.33
+initial_velocity_random = 0.77
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 29.82
+radial_accel = 24.56
+tangential_accel = 24.56
+damping = 100.0
+angle = 277.9
+angle_random = 0.32
+scale = 20.0
+scale_random = 0.58
+color = Color( 0.227451, 0.227451, 0.227451, 1 )
+color_ramp = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 333.33
+initial_velocity_random = 0.77
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 29.82
+radial_accel = 24.56
+tangential_accel = 24.56
+damping = 100.0
+angle = 277.9
+angle_random = 0.32
+scale = 20.0
+scale_random = 0.58
+color = Color( 1, 0.945098, 0.113725, 1 )
+
+[node name="ExplosionArea" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+collision_mask = 131072
+script = ExtResource( 2 )
+col_shape = NodePath("CollisionShape2D")
+
+[node name="ExplosionTimer" type="Timer" parent="." index="0"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Orange" type="Particles2D" parent="." index="2"]
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 2 )
+
+[node name="Greys" type="Particles2D" parent="." index="3"]
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 5 )
+
+[node name="Yellow" type="Particles2D" parent="." index="4"]
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+
+[connection signal="timeout" from="ExplosionTimer" to="." method="_on_ExplosionTimer_timeout"]
