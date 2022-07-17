@@ -8,7 +8,7 @@ class_name Player
 # -----------------------------------
 const TERMINAL_SPEED := 5000.0
 
-export(PackedScene) var temp_dice
+export(AudioStream) var hurt_sound
 
 export(Resource) var player_stats
 
@@ -37,6 +37,12 @@ onready var _invincibility_timer := $invincibilityTimer as Timer
 
 onready var _hurtbox := $HurtBox as HurtBox
 
+onready var _sprite := $Sprite
+onready var _anim_player := $AnimationPlayer
+onready var _anim_player2 := $AnimationPlayer2
+
+onready var _audio_player := $AudioStreamPlayer
+
 
 # Functions
 # ------------------------------------
@@ -58,6 +64,8 @@ func _init_stats() -> void:
 	
 
 func _process(_delta: float) -> void:
+	update_sprite()
+
 	if _can_throw and _is_throwing:
 		_can_throw = false
 
@@ -128,6 +136,20 @@ func update_mouse() -> void:
 	mouse_dir = (mouse_pos - self.global_position).normalized()
 
 
+func update_sprite() -> void:
+	if velocity.length() > 10.0:
+		_anim_player.play("Walk")
+	
+	else:
+		_anim_player.play("Idle")
+	
+	if _input_dir.x > 0:
+		_sprite.scale.x = -1
+	
+	if _input_dir.x < 0:
+		_sprite.scale.x = 1
+
+
 # func throw_dice() -> void:
 # 	_can_throw = false
 
@@ -152,6 +174,10 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 
 	_hurtbox.disable_col_shape(true)
 	_invincibility_timer.start()
+	_anim_player2.play("Hurt")
+	
+	_audio_player.stream = hurt_sound
+	_audio_player.playing = true
 
 
 func _on_ThrowRateTimer_timeout() -> void:
@@ -159,6 +185,8 @@ func _on_ThrowRateTimer_timeout() -> void:
 
 func _on_invincibilityTimer_timeout() -> void:
 	_hurtbox.disable_col_shape(false)
+	_anim_player2.stop()
+	_sprite.visible = true
 
 func _on_throw_rate_updated(new_throw_rate : float) -> void:
 	_throw_rate_timer.wait_time = new_throw_rate

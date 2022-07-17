@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/phaserUp7.ogg-8d8c9117878900bb0185cb1c08f97dc5.oggstr"
+
+[deps]
+
+source_file="res://Common/UI/PlayerUI/ExpBar/phaserUp7.ogg"
+dest_files=[ "res://.import/phaserUp7.ogg-8d8c9117878900bb0185cb1c08f97dc5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

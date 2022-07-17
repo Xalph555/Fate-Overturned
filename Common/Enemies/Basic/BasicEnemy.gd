@@ -10,6 +10,8 @@ signal enemy_died
 
 # Variables
 # ----------------------------------
+export(PackedScene) var death_particles
+
 export(PackedScene) var exp_orb
 export(float) var base_exp := 10.0
 
@@ -28,6 +30,9 @@ var velocity := Vector2.ZERO
 var player_ref
 
 onready var _hurtbox := $HurtBox as HurtBox
+
+onready var _anim_player2 := $AnimationPlayer2
+onready var _audio_player := $AudioStreamPlayer2D
 
 
 # Functions
@@ -60,12 +65,27 @@ func _physics_process(delta: float) -> void:
 
 	velocity = move_and_slide(velocity)
 
+	update_sprite()
+
+func update_sprite() -> void:
+	if move_dir.x > 0:
+		$Sprite.scale.x = -1
+	
+	if move_dir.x <= 0:
+		$Sprite.scale.x = 1
+
 
 func spawn_exp_orb() -> void:
 	var exp_instance = exp_orb.instance()
 	exp_instance.exp_amount = base_exp
 	exp_instance.global_position = self.global_position
 	get_tree().current_scene.add_child(exp_instance)
+
+
+func spawn_death_particles() -> void:
+	var particles_instance = death_particles.instance()
+	particles_instance.global_position = self.global_position
+	get_tree().current_scene.add_child(particles_instance)
 
 
 # damage
@@ -83,8 +103,12 @@ func deal_damage(dmg : float, knockback : float, knockback_dir : Vector2, damage
 
 	velocity += knockback_force
 
+	_anim_player2.play("Hurt")
+	_audio_player.playing = true
+
 	if current_health <= 0.0:
 		call_deferred("spawn_exp_orb")
+		call_deferred("spawn_death_particles")
 		
 		emit_signal("enemy_died")
 

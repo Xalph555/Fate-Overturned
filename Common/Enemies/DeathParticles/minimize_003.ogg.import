@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/minimize_003.ogg-8bd6d5474b92e4904ee26de0306d75ad.oggstr"
+
+[deps]
+
+source_file="res://Common/Enemies/DeathParticles/minimize_003.ogg"
+dest_files=[ "res://.import/minimize_003.ogg-8bd6d5474b92e4904ee26de0306d75ad.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

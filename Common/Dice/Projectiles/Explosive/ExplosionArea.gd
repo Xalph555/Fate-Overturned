@@ -15,6 +15,7 @@ onready var _greys_particles := $Greys
 onready var _yellow_particles := $Yellow
 
 onready var _explosion_timer := $ExplosionTimer
+onready var _audio_player := $AudioStreamPlayer2D
 
 
 # Functions
@@ -36,6 +37,7 @@ func boom_boom(parent_ref, location : Vector2, damage : float, knockback : float
 
 	emit_particles()
 	_explosion_timer.start()
+	_audio_player.playing = true
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	var hurtboxes = get_overlapping_areas()

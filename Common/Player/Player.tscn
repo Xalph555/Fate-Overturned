@@ -1,19 +1,117 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Common/Player/TempPlayerSprite.png" type="Texture" id=1]
+[ext_resource path="res://Common/Player/PlayerSprites.png" type="Texture" id=1]
 [ext_resource path="res://Common/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Common/HitHurtBox/Hurtbox/HurtBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Common/Dice/Projectiles/Explosive/ExposiveDice.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/Player/error_008.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Common/Player/PlayerStats.tres" type="Resource" id=5]
 [ext_resource path="res://Common/Dice/DiceBag/DiceBag.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Common/ShadowSprite.png" type="Texture" id=7]
+[ext_resource path="res://Common/Player/footstep_grass_004.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Common/Dice/Projectiles/D6/D6.tres" type="Resource" id=9]
 
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Walk"
+length = 0.6
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.34 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Hurt"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.49999
+radius = 4.49999
 height = 5.00002
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 7.0
+radius = 5.5
 height = 3.0
 
 [sub_resource type="CircleShape2D" id=3]
@@ -23,8 +121,24 @@ radius = 78.4618
 scale = Vector2( 2, 2 )
 collision_layer = 512
 script = ExtResource( 2 )
-temp_dice = ExtResource( 4 )
+hurt_sound = ExtResource( 4 )
 player_stats = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+bus = "Sound"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Idle = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+anims/Walk = SubResource( 6 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Hurt = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
 [node name="ThrowRateTimer" type="Timer" parent="."]
 one_shot = true
@@ -35,7 +149,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -18 )
 current = true
-zoom = Vector2( 0.9, 0.9 )
+zoom = Vector2( 0.8, 0.8 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.05
@@ -43,15 +157,21 @@ drag_margin_top = 0.05
 drag_margin_right = 0.05
 drag_margin_bottom = 0.05
 
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, 9.5 )
+texture = ExtResource( 7 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.5 )
+position = Vector2( 0, 5.5 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 1.5 )
 collision_layer = 512
 col_shape = NodePath("CollisionShape2D")
 
@@ -59,6 +179,7 @@ col_shape = NodePath("CollisionShape2D")
 shape = SubResource( 2 )
 
 [node name="ExpCollectionArea" type="Area2D" parent="."]
+visible = false
 modulate = Color( 0.921569, 0, 1, 1 )
 collision_layer = 0
 collision_mask = 1024

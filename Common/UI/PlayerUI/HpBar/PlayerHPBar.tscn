@@ -9,9 +9,9 @@ script = ExtResource( 2 )
 progress_bar = NodePath("BlankBar")
 
 [node name="BlankBar" parent="." instance=ExtResource( 1 )]
-margin_left = -37.0
-margin_top = -43.0
-margin_right = 463.0
-margin_bottom = -11.0
-rect_scale = Vector2( 0.15, 0.2 )
+margin_left = -25.0
+margin_top = -29.0
+margin_right = 475.0
+margin_bottom = 3.0
+rect_scale = Vector2( 0.1, 0.16 )
 tint_progress = Color( 0.172549, 1, 0, 1 )

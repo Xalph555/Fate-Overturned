@@ -16,6 +16,8 @@ var next_dice := 0
 
 var player
 
+onready var _audio_player := $AudioStreamPlayer
+
 
 # Functions
 # ------------------------------------
@@ -24,6 +26,7 @@ func throw_dice() -> void:
 	get_tree().current_scene.add_child(dice_instance)
 
 	dice_instance.throw_dice(player, player.global_position, player.mouse_dir, player.player_stats.throw_force)
+	_audio_player.playing = true
 
 	next_dice += 1
 

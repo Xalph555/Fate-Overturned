@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/toggle_001.ogg-d6aa85088c5c2a5b4d556841f7e24753.oggstr"
+
+[deps]
+
+source_file="res://Common/Enemies/Experience/toggle_001.ogg"
+dest_files=[ "res://.import/toggle_001.ogg-d6aa85088c5c2a5b4d556841f7e24753.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
