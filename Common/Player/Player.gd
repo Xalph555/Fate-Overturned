@@ -30,6 +30,8 @@ var _is_throwing := false
 var mouse_pos := Vector2.ZERO
 var mouse_dir := Vector2.ZERO
 
+onready var dice_bag := $DiceBag as DiceBag
+
 onready var _throw_rate_timer := $ThrowRateTimer as Timer
 onready var _invincibility_timer := $invincibilityTimer as Timer
 
@@ -40,6 +42,7 @@ onready var _hurtbox := $HurtBox as HurtBox
 # ------------------------------------
 func _ready() -> void:
 	_hurtbox.parent = self
+	dice_bag.player = self
 
 	_init_stats()
 
@@ -56,7 +59,11 @@ func _init_stats() -> void:
 
 func _process(_delta: float) -> void:
 	if _can_throw and _is_throwing:
-		throw_dice()
+		_can_throw = false
+
+		dice_bag.throw_dice()
+
+		_throw_rate_timer.start()
 
 
 func _physics_process(_delta: float) -> void:
@@ -121,15 +128,15 @@ func update_mouse() -> void:
 	mouse_dir = (mouse_pos - self.global_position).normalized()
 
 
-func throw_dice() -> void:
-	_can_throw = false
+# func throw_dice() -> void:
+# 	_can_throw = false
 
-	var dice_instance = temp_dice.instance()
-	get_tree().current_scene.add_child(dice_instance)
+# 	var dice_instance = temp_dice.instance()
+# 	get_tree().current_scene.add_child(dice_instance)
 
-	dice_instance.throw_dice(self, self.global_position, mouse_dir, player_stats.throw_force)
+# 	dice_instance.throw_dice(self, self.global_position, mouse_dir, player_stats.throw_force)
 
-	_throw_rate_timer.start()
+# 	_throw_rate_timer.start()
 
 
 # damage
