@@ -26,7 +26,7 @@ angle = 277.9
 angle_random = 0.32
 scale = 20.0
 scale_random = 0.58
-color = Color( 1, 0.529412, 0.113725, 1 )
+color = Color( 1.5, 1.15, 0.5, 1 )
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.253906, 0.253906, 0.253906, 1, 0.699219, 0.699219, 0.699219, 1 )
@@ -73,7 +73,7 @@ angle = 277.9
 angle_random = 0.32
 scale = 20.0
 scale_random = 0.58
-color = Color( 1, 0.945098, 0.113725, 1 )
+color = Color( 2, 1.9, 0.22, 1 )
 
 [node name="ExplosionArea" instance=ExtResource( 1 )]
 modulate = Color( 1, 1, 1, 1 )
