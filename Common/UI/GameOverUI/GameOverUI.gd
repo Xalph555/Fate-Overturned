@@ -1,5 +1,44 @@
+# GameOverUI
+# -----------------------------------------------
 extends Control
+class_name GameOverUI
 
 
-func _ready() -> void:
-	pass
+# Variables
+# ------------------------------------------
+export(NodePath) onready var score_label = get_node(score_label) as Label
+
+var is_game_over := false
+
+
+# Functions
+# ----------------------------------------
+func init_ui() -> void:
+	GameEvents.connect("player_died", self, "_on_player_died")
+
+	self.visible = false
+
+
+func _on_player_died() -> void:
+	if is_game_over: 
+		return
+	is_game_over = true
+
+	var level_manager = get_tree().get_nodes_in_group("LevelManager")[0]
+	var player_stats = get_tree().get_nodes_in_group("Player")[0].player_stats
+
+	level_manager.game_over()
+	self.visible = true
+
+
+	var score = level_manager.current_time * 100 + level_manager.total_kills * 50 + player_stats.current_level * 15
+
+	score_label.text = "Score: " + str(int(score))
+
+
+func _on_PlayAgain_button_up() -> void:
+	pass # Replace with function body.
+
+
+func _on_MainMenu_button_up() -> void:
+	pass # Replace with function body.

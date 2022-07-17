@@ -99,3 +99,4 @@ func _on_SpawnTimer_timeout() -> void:
 
 func _on_enemy_death() -> void:
 	total_spawned -= 1
+	level_manager.total_kills += 1

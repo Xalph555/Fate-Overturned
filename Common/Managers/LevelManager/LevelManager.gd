@@ -14,6 +14,8 @@ class_name LevelManager
 var current_time := 0.0
 var counting_time := false
 
+var total_kills := 0
+
 
 # Functions
 # ----------------------------------------
@@ -39,3 +41,6 @@ func resume_game() -> void:
 	get_tree().paused = false
 
 
+func game_over() -> void:
+	counting_time = false
+	get_tree().paused = true
