@@ -50,8 +50,16 @@ var current_experience := 0.0
 # Functions
 # ------------------------------------
 func init_stats() -> void:
+	reset_stats()
+
+
+func reset_stats() -> void:
+	max_health = 50
 	current_health = max_health
+
+	current_level = 1
 	max_experience = level_exp_thresholds[0]
+	current_experience = 0.0
 
 	emit_signal("all_stats_updated")
 
